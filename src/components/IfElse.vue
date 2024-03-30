@@ -28,6 +28,7 @@
             div3
         </p>
         <hr />
+        <h1>Interações</h1>
         <div class="line">
             <button @click="chanceBolean('text1')" class="button">
                 {{ !text1 ? 'Ativar' : 'Desativar' }} Texto 1

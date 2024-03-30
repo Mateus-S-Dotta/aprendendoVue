@@ -12,6 +12,7 @@
             E a depender da condição, aquela classe será aplicada ou não
         </p>
         <hr />
+        <h1>Interações</h1>
         <h3 :class="{ 'vermelhinha': num === 1, 'marrom': num === 2, 'azulona': num === 3 }">
             Botões abaixo mudam a classe deste texto
         </h3>

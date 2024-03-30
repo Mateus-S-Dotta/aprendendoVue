@@ -26,6 +26,7 @@
             Para que essa div não exista, deve usar <strong>{{ '<template></template>' }}</strong>
         </p>
         <hr />
+        <h1>Interações</h1>
         <div class="line">
             <button @click="changeNum(true)" class="button">
                 -

@@ -33,6 +33,7 @@
             </strong>
         </p>
         <hr />
+        <h1>Interações</h1>
         <h2>
             Evento de "Você não me pega"
         </h2>
@@ -40,16 +41,17 @@
             Os fracos chamam de MouseEnter ou Click
         </p>
         <div>
-            <div @click="mudarPosicao" @mouseenter="mudarPosicao" :style="{ ...impegavel, marginLeft: `${positionLeft * 26.25}%` }">
+            <div @click="mudarPosicao" @mouseenter="mudarPosicao"
+                :style="{ ...impegavel, marginLeft: `${positionLeft * 26.25}%` }">
                 <strong class="branco">
-                    Não me pega!
+                    {{ first ? 'Fugi de você' : 'Não me pega!' }}
                 </strong>
             </div>
         </div>
         <div @click="verPosicao($event)" class="grande">
-<p class="branco">
-    {{ x === 0 ? 'Click e Veja!' : `X: ${x}px, Y: ${y}px`}}
-</p>
+            <p class="branco">
+                {{ x === 0 ? 'Click e Veja!' : `X: ${x}px, Y: ${y}px` }}
+            </p>
         </div>
     </div>
 </template>
@@ -72,11 +74,13 @@
                     borderRadius: '8px'
                 },
                 x: 0,
-                y: 0
+                y: 0,
+                first: false
             }
         },
         methods: {
             mudarPosicao() {
+                this.first = true
                 if (this.positionLeft === 3) {
                     this.positionLeft = 0
                 } else {

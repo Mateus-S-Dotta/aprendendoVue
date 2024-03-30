@@ -8,6 +8,7 @@
 			No exemplo abaixo, é possível ver dois tipos diferentes de dados: um proveniente de um input e outro sendo
 			um número comum </p>
 		<hr />
+		<h1>Interações</h1>
 		<div class="line">
 			<button class="button" @click="changeNumber('less')">
 				-
