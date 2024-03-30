@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<PageComponent />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import PageComponent from './components/PageComponent.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+		components: {
+			PageComponent
+		},
+		name: "App",
+	};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	#app {
+		font-family: Avenir, Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #2c3e50;
+		margin-top: 60px;
+	}
+
+	.divExplanation {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.button {
+        cursor: pointer;
+        padding: 8px;
+        box-shadow: 1px 1px 4px 0 #737373
+    }
+
+	.line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+	input {
+		padding: 8px;
+	}
 </style>
