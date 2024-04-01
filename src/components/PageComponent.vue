@@ -3,26 +3,27 @@
 	<h2 class="spacing">
 		Nem todos os detalhes serão explicados pois já utilizo React
 	</h2>
+	<a href="https://github.com/Mateus-S-Dotta/aprendendoVue" target="_blank">
+		<h2 class="spacing">
+		Link para GitHub deste projeto
+	</h2>
+	</a>
 	<div class="content">
 		<div class="table">
 			<div class="header">
 				<template v-for="(text, index) in titleTexts" :key="index">
-					<TitleButton @changeShow="changeShow" :text="text" :index="index"
+					<TitleButton @changeShow="changeShow" :text="text.nome" :index="index"
 						:exist="(index + 1) !== titleTexts.length" />
 				</template>
 			</div>
-			<DadosVue v-if="show === 0" />
-			<InputsVue v-else-if="show === 1" />
-			<IfElse v-else-if="show === 2" />
-			<MapeamentoVue v-else-if="show === 3" />
-			<ClassesVue v-else-if="show === 4" />
-			<EventosVue v-else-if="show === 5" />
+			<component :is="titleTexts[show].component" />
 		</div>
 	</div>
 </template>
 <script>
 	import ClassesVue from './ClassesVue.vue';
 	import DadosVue from './DadosVue.vue';
+	import EmissaoEventos from './emissaoEventos/EmissaoEventos.vue';
 	import EventosVue from './EventosVue.vue';
 	import IfElse from './IfElse.vue';
 	import InputsVue from './InputsVue.vue';
@@ -38,18 +39,27 @@
 			IfElse,
 			MapeamentoVue,
 			ClassesVue,
-			EventosVue
+			EventosVue,
+			EmissaoEventos
 		},
 		data() {
 			return {
-				titleTexts: ['Dados', 'Inputs', 'If Else', 'Mapeamentos', 'Classes', 'Eventos'],
+				titleTexts: [
+					{ nome: 'Dados', component: 'DadosVue' },
+					{ nome: 'Inputs', component: 'InputsVue' },
+					{ nome: 'If Else', component: 'IfElse' },
+					{ nome: 'Mapeamentos', component: 'MapeamentoVue' },
+					{ nome: 'Classes', component: 'ClassesVue' },
+					{ nome: 'Eventos', component: 'EventosVue' },
+					{nome: 'Emissao', component: 'EmissaoEventos'}
+				],
 				show: 0,
 			};
 		},
 		methods: {
 			changeShow(num) {
 				this.show = num;
-			}
+			},
 		}
 	};
 </script>
