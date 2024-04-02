@@ -6,6 +6,7 @@ import IfElse from './components/IfElse.vue';
 import InputsVue from './components/InputsVue.vue';
 import MapeamentoVue from './components/MapeamentoVue.vue';
 import EmissaoEventos from './components/emissaoEventos/EmissaoEventos.vue';
+import routerVue from './components/RouterVue.vue';
 
 const routes = [
     { path: '/', component: DadosVue },
@@ -15,7 +16,9 @@ const routes = [
     { path: '/mapeamentos', component: MapeamentoVue, name: 'Mapeamento' },
     { path: '/classes', component: ClassesVue, name: 'Classes' },
     { path: '/eventos', component: EventosVue, name: 'Eventos' },
-    { path: '/emissao', component: EmissaoEventos, name: 'Emissão' }
+    { path: '/emissao', component: EmissaoEventos, name: 'Emissão' },
+    { path: '/router', component: routerVue, name: 'Router' },
+    { path: '/router/:input?', component: routerVue }
 ];
 
 const router = createRouter({

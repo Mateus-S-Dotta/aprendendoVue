@@ -16,7 +16,7 @@
 						:exist="(index + 1) !== routerArray.length" />
 				</template>
 			</div>
-			<router-view></router-view>
+			<router-view />
 		</div>
 	</div>
 </template>
