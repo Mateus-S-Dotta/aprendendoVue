@@ -1,19 +1,15 @@
 <template>
 	<h1 class="spacing">Minhas anotações de estudos do VUE.JS</h1>
-	<h2 class="spacing">
-		Nem todos os detalhes serão explicados pois já utilizo React
-	</h2>
+	<h2 class="spacing" @click="console.log(thatRoute)"> Nem todos os detalhes serão explicados pois já utilizo React</h2>
 	<a href="https://github.com/Mateus-S-Dotta/aprendendoVue" target="_blank">
-		<h2 class="spacing">
-			Link para GitHub deste projeto
-		</h2>
+		<h2 class="spacing"> Link para GitHub deste projeto </h2>
 	</a>
 	<div class="content">
 		<div class="table">
 			<div class="header">
 				<template v-for="(route, index) in routerArray" :key="index">
-					<TitleButton v-if="route.name" @changeRoute="changeRoute" :text="route.name" :route="route.path"
-						:exist="(index + 1) !== routerArray.length" />
+					<TitleButton v-if="route.name" @changeRoute="changeRoute" :thatRoute="thatRoute" :text="route.name"
+						:route="route.path" :exist="(index + 1) !== routerArray.length" />
 				</template>
 			</div>
 			<router-view />
@@ -31,6 +27,11 @@
 			return {
 				router: useRouter(),
 				routerArray: useRouter().getRoutes()
+			}
+		},
+		computed: {
+			thatRoute() {
+				return this.$route.path.split('/')[1] ? '/' + this.$route.path.split('/')[1] : '/dados';
 			}
 		},
 		components: {

@@ -1,16 +1,12 @@
 <template>
     <div class="divExplanation">
         <h1>Classes</h1>
-        <p>
-            No Vue tem como alterar a classe dinamicamente
-        </p>
+        <p> No Vue tem como alterar a classe dinamicamente </p>
         <p>
             Em alguma tag, invez de colocar class="...", deve colocar
             <strong>:class="{'nomeDaClasse': condição}"</strong>
         </p>
-        <p>
-            E a depender da condição, aquela classe será aplicada ou não
-        </p>
+        <p> E a depender da condição, aquela classe será aplicada ou não </p>
         <hr />
         <h1>Interações</h1>
         <h3 :class="{ 'vermelhinha': num === 1, 'marrom': num === 2, 'azulona': num === 3 }">

@@ -1,45 +1,18 @@
 <template>
     <div class="divExplanation">
         <h1>Eventos</h1>
-        <p>
-            Para adicionar eventos no Vue, basta você adcionar <strong>@evento="função"</strong> na tag que deseja
+        <p> Para adicionar eventos no Vue, basta você adcionar <strong>@evento="função"</strong> na tag que deseja </p>
+        <p> A função fica dentro de um objeto no export do script chamada "methods". Assim: </p>
+        <p> <strong> {{ 'methods: {' }} </strong> </p>
+        <p> <strong> {{ '&nbsp;&nbsp;metodo() {' }} </strong>
         </p>
-        <p>
-            A função fica dentro de um objeto no export do script chamada "methods". Assim:
-        </p>
-        <p>
-            <strong>
-                {{ 'methods: {' }}
-            </strong>
-        </p>
-        <p>
-            <strong>
-                {{ '&nbsp;&nbsp;metodo() {' }}
-            </strong>
-        </p>
-        <p>
-            <strong>
-                {{ "&nbsp;&nbsp;&nbsp;&nbsp;codigo do metodo" }}
-            </strong>
-        </p>
-        <p>
-            <strong>
-                {{ '&nbsp;&nbsp;}' }}
-            </strong>
-        </p>
-        <p>
-            <strong>
-                {{ '}' }}
-            </strong>
-        </p>
+        <p> <strong> {{ "&nbsp;&nbsp;&nbsp;&nbsp;codigo do metodo" }} </strong> </p>
+        <p> <strong> {{ '&nbsp;&nbsp;}' }} </strong> </p>
+        <p> <strong> {{ '}' }} </strong> </p>
         <hr />
         <h1>Interações</h1>
-        <h2>
-            Evento de "Você não me pega"
-        </h2>
-        <p>
-            Os fracos chamam de MouseEnter ou Click
-        </p>
+        <h2> Evento de "Você não me pega" </h2>
+        <p> Os fracos chamam de MouseEnter ou Click </p>
         <div>
             <div @click="mudarPosicao" @mouseenter="mudarPosicao"
                 :style="{ ...impegavel, marginLeft: `${positionLeft * 26.25}%` }">
@@ -49,9 +22,7 @@
             </div>
         </div>
         <div @click="verPosicao($event)" class="grande">
-            <p class="branco">
-                {{ x === 0 ? 'Click e Veja!' : `X: ${x}px, Y: ${y}px` }}
-            </p>
+            <p class="branco"> {{ x === 0 ? 'Click e Veja!' : `X: ${x}px, Y: ${y}px` }} </p>
         </div>
     </div>
 </template>

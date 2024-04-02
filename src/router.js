@@ -7,6 +7,7 @@ import InputsVue from './components/InputsVue.vue';
 import MapeamentoVue from './components/MapeamentoVue.vue';
 import EmissaoEventos from './components/emissaoEventos/EmissaoEventos.vue';
 import routerVue from './components/RouterVue.vue';
+import NotFound from './components/NotFound.vue';
 
 const routes = [
     { path: '/', component: DadosVue },
@@ -18,7 +19,8 @@ const routes = [
     { path: '/eventos', component: EventosVue, name: 'Eventos' },
     { path: '/emissao', component: EmissaoEventos, name: 'Emissão' },
     { path: '/router', component: routerVue, name: 'Router' },
-    { path: '/router/:input?', component: routerVue }
+    { path: '/router/:input?', component: routerVue },
+    { path: '/:catchAll(.*)', component: NotFound }
 ];
 
 const router = createRouter({
