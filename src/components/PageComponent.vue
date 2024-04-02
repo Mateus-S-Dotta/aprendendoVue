@@ -5,61 +5,41 @@
 	</h2>
 	<a href="https://github.com/Mateus-S-Dotta/aprendendoVue" target="_blank">
 		<h2 class="spacing">
-		Link para GitHub deste projeto
-	</h2>
+			Link para GitHub deste projeto
+		</h2>
 	</a>
 	<div class="content">
 		<div class="table">
 			<div class="header">
-				<template v-for="(text, index) in titleTexts" :key="index">
-					<TitleButton @changeShow="changeShow" :text="text.nome" :index="index"
-						:exist="(index + 1) !== titleTexts.length" />
+				<template v-for="(route, index) in routerArray" :key="index">
+					<TitleButton v-if="route.name" @changeRoute="changeRoute" :text="route.name" :route="route.path"
+						:exist="(index + 1) !== routerArray.length" />
 				</template>
 			</div>
-			<component :is="titleTexts[show].component" />
+			<router-view></router-view>
 		</div>
 	</div>
 </template>
+
 <script>
-	import ClassesVue from './ClassesVue.vue';
-	import DadosVue from './DadosVue.vue';
-	import EmissaoEventos from './emissaoEventos/EmissaoEventos.vue';
-	import EventosVue from './EventosVue.vue';
-	import IfElse from './IfElse.vue';
-	import InputsVue from './InputsVue.vue';
-	import MapeamentoVue from './MapeamentoVue.vue';
+	import { useRouter } from 'vue-router';
 	import TitleButton from './TitleButton.vue';
 
 	export default {
 		name: "PageComponent",
-		components: {
-			TitleButton,
-			DadosVue,
-			InputsVue,
-			IfElse,
-			MapeamentoVue,
-			ClassesVue,
-			EventosVue,
-			EmissaoEventos
-		},
 		data() {
 			return {
-				titleTexts: [
-					{ nome: 'Dados', component: 'DadosVue' },
-					{ nome: 'Inputs', component: 'InputsVue' },
-					{ nome: 'If Else', component: 'IfElse' },
-					{ nome: 'Mapeamentos', component: 'MapeamentoVue' },
-					{ nome: 'Classes', component: 'ClassesVue' },
-					{ nome: 'Eventos', component: 'EventosVue' },
-					{nome: 'Emissao', component: 'EmissaoEventos'}
-				],
-				show: 0,
-			};
+				router: useRouter(),
+				routerArray: useRouter().getRoutes()
+			}
+		},
+		components: {
+			TitleButton,
 		},
 		methods: {
-			changeShow(num) {
-				this.show = num;
-			},
+			changeRoute(route) {
+				this.router.push(route)
+			}
 		}
 	};
 </script>

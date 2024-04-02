@@ -10,20 +10,14 @@
         name: "TitleButton",
         props: {
             text: String,
-            show: Number,
-            index: Number,
+            route: String,
             exist: Boolean
         },
-        data() {
-            return {
-                num: this.show
-            }
-        },
-        emits: ['changeShow'],
+        emits: ['changeRoute'],
         methods: {
             content() {
-                this.$emit('changeShow', this.index);
+                this.$emit('changeRoute', this.route);
             }
-        }
+        },
     }
 </script>

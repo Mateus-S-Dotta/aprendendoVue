@@ -4,6 +4,8 @@
         <p>Fazer a comunicação de um componente pai para um componente filho é meio estranho no Vue</p>
         <p>Ponto pro React...</p>
         <p>No geral, se faz essa comunicação através de eventos e $emit</p>
+        <p>Ou seja, você declara a função no elemento pai, e o dado será manipulado através da função</p>
+        <p>O elemento filho não muda o valor diretamente, só chama uma função que mudará</p>
         <hr />
         <h1>Interações</h1>
         <div class="borda">
