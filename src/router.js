@@ -10,6 +10,8 @@ import routerVue from './components/RouterVue.vue';
 import NotFound from './components/NotFound.vue';
 
 const routes = [
+    { path: '/router/:input?', component: routerVue },
+    { path: '/:catchAll(.*)', component: NotFound },
     { path: '/', component: DadosVue },
     { path: '/dados', component: DadosVue, name: 'Dados' },
     { path: '/inputs', component: InputsVue, name: 'Inputs' },
@@ -18,9 +20,7 @@ const routes = [
     { path: '/classes', component: ClassesVue, name: 'Classes' },
     { path: '/eventos', component: EventosVue, name: 'Eventos' },
     { path: '/emissao', component: EmissaoEventos, name: 'Emissão' },
-    { path: '/router', component: routerVue, name: 'Router' },
-    { path: '/router/:input?', component: routerVue },
-    { path: '/:catchAll(.*)', component: NotFound }
+    { path: '/router', component: routerVue, name: 'Router' }
 ];
 
 const router = createRouter({

@@ -9,7 +9,7 @@
 			<div class="header">
 				<template v-for="(route, index) in routerArray" :key="index">
 					<TitleButton v-if="route.name" @changeRoute="changeRoute" :thatRoute="thatRoute" :text="route.name"
-						:route="route.path" :exist="(index + 1) !== routerArray.length" />
+						:route="route.path" :exist="index !== (routerArray.length - 2)" />
 				</template>
 			</div>
 			<router-view />
