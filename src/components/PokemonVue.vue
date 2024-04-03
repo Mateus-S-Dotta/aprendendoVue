@@ -7,7 +7,7 @@
             <div>
                 <img ref="image" @load="getImageSize" :src="imgPokedex" />
             </div>
-            <div class="tela" :style="imgStyle">
+            <div class="tela" :style="imgStyle" @click="console.log(aa)">
 
             </div>
         </div>
@@ -27,7 +27,7 @@
                 pokemon: '',
                 imgPokedex: pokedex,
                 imageSize: { width: 0, height: 0 },
-                imgStyle: {}
+                imgStyle: {},
             }
         },
         // created: async function () {
@@ -44,10 +44,17 @@
                 const img = this.$refs.image;
                 const rect = img.getBoundingClientRect();
                 this.imageSize = {
-                    width: rect.height * 1.5,
+                    width: rect.height / 1.5,
                     height: rect.height
                 };
             }
+        },
+        mounted() {
+            this.getImageSize(); 
+            window.addEventListener('resize', this.getImageSize);
+        },
+        beforeUnmount() {
+            window.removeEventListener('resize', this.getImageSize);
         },
         watch: {
             imageSize: {
@@ -60,7 +67,7 @@
                         width: '100%',
                         backgroundColor: 'rgba(0, 0, 0, 0.9)',
                         top: '24.5%',
-                        marginLeft: this.imageSize.width / 23.5 + 'px',
+                        marginLeft: this.imageSize.width / 10.5 + 'px',
                     }
                 },
                 deep: true
