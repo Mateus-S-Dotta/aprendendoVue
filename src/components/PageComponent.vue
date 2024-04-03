@@ -1,6 +1,6 @@
 <template>
 	<h1 class="spacing">Minhas anotações de estudos do VUE.JS</h1>
-	<h2 class="spacing" @click="console.log(thatRoute)"> Nem todos os detalhes serão explicados pois já utilizo React</h2>
+	<h2 class="spacing"> Nem todos os detalhes serão explicados pois já utilizo React</h2>
 	<a href="https://github.com/Mateus-S-Dotta/aprendendoVue" target="_blank">
 		<h2 class="spacing"> Link para GitHub deste projeto </h2>
 	</a>
