@@ -37,7 +37,7 @@
 	.button {
         cursor: pointer;
         padding: 8px;
-        box-shadow: 1px 1px 4px 0 #737373
+        box-shadow: 0 1px 4px 0 #737373
     }
 
 	.line {

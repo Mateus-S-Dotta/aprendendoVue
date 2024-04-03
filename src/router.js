@@ -6,11 +6,12 @@ import IfElse from './components/IfElse.vue';
 import InputsVue from './components/InputsVue.vue';
 import MapeamentoVue from './components/MapeamentoVue.vue';
 import EmissaoEventos from './components/emissaoEventos/EmissaoEventos.vue';
-import routerVue from './components/RouterVue.vue';
+import RouterVue from './components/RouterVue.vue';
 import NotFound from './components/NotFound.vue';
+import PokemonVue from './components/PokemonVue.vue'
 
 const routes = [
-    { path: '/router/:input?', component: routerVue },
+    { path: '/router/:input?', component: RouterVue },
     { path: '/:catchAll(.*)', component: NotFound },
     { path: '/', component: DadosVue },
     { path: '/dados', component: DadosVue, name: 'Dados' },
@@ -20,7 +21,8 @@ const routes = [
     { path: '/classes', component: ClassesVue, name: 'Classes' },
     { path: '/eventos', component: EventosVue, name: 'Eventos' },
     { path: '/emissao', component: EmissaoEventos, name: 'Emissão' },
-    { path: '/router', component: routerVue, name: 'Router' }
+    { path: '/router', component: RouterVue, name: 'Router' },
+    { path: '/pokemon', component: PokemonVue, name: 'Pokemon' }
 ];
 
 const router = createRouter({
