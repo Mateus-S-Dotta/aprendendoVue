@@ -14,6 +14,7 @@ const routes = [
     { path: '/router/:input?', component: RouterVue },
     { path: '/:catchAll(.*)', component: NotFound },
     { path: '/', component: DadosVue },
+    { path: '/pokemon', component: PokemonVue, name: 'Pokemon' },
     { path: '/dados', component: DadosVue, name: 'Dados' },
     { path: '/inputs', component: InputsVue, name: 'Inputs' },
     { path: '/ifelse', component: IfElse, name: 'IfElse' },
@@ -21,8 +22,7 @@ const routes = [
     { path: '/classes', component: ClassesVue, name: 'Classes' },
     { path: '/eventos', component: EventosVue, name: 'Eventos' },
     { path: '/emissao', component: EmissaoEventos, name: 'Emissão' },
-    { path: '/router', component: RouterVue, name: 'Router' },
-    { path: '/pokemon', component: PokemonVue, name: 'Pokemon' }
+    { path: '/router', component: RouterVue, name: 'Router' }
 ];
 
 const router = createRouter({

@@ -2,71 +2,71 @@
     <div class="divExplanation">
         <h1>Pokemon</h1>
         <p>Agora você verá algo que ninguém nunca fez: <strong>Uma Pokedex</strong></p>
-        <p><strong>Observação:</strong> que trabalheira pra deixar esse quadrado perfeitinho no centro, mds</p>
+        <p><strong>Observação:</strong> que trabalheira deu essa pokedex, mds</p>
+        <p>Mas, creio que o resultado ficou legal</p>
         <hr />
         <h1>Interações</h1>
-        <h3 @click="console.log(this.selected)">Clique em qualquer lugar na pokedex para interagir</h3>
+        <h3>Clique em qualquer lugar na pokedex para interagir</h3>
         <div class="center">
             <img ref="image" @click="ativarVisualicao" @load="getImageSize" :src="imgPokedex" />
             <div v-if="version" :style="boxStyle">
-                <div v-if="pokemons[selected - 1]" class="screenPart texts">
-                    <h1 :style="{ fontSize: imageSize.height / 15.5 + 'px' }">{{ pokemons[selected - 1].name ?
-            pokemons[selected - 1].name : '' }}</h1>
+                <div v-if="pokemons[selected - 1]" class="screenPart" @click="handleVersion(pokemons[selected - 1].url)"
+                    >
+                    <h1 :style="h1">{{ pokemons[selected - 1] ? pokemons[selected - 1].name : '' }}</h1>
                 </div>
-                <div class="screenPart mainText texts">
-                    <h1 :style="{ fontSize: imageSize.height / 15.5 + 'px' }">{{ pokemons[selected].name ?
-            pokemons[selected].name : '' }}</h1>
+                <div v-if="pokemons[selected]" class="screenPart mainText"
+                    @click="handleVersion(pokemons[selected].url)">
+                    <h1 :style="h1">{{ pokemons[selected].name }}</h1>
                 </div>
-                <div v-if="pokemons[selected + 1]" class="screenPart lastText texts">
-                    <h1 :style="{ fontSize: imageSize.height / 15.5 + 'px' }">{{ pokemons[selected + 1].name ?
-            pokemons[selected + 1].name : '' }}</h1>
+                <div v-if="pokemons[selected + 1]" class="screenPart lastText" @click="handleVersion(pokemons[selected + 1].url)"
+                    >
+                    <h1 :style="h1">{{ pokemons[selected + 1] ? pokemons[selected + 1].name : '' }}</h1>
                 </div>
             </div>
-            <div v-else :style="noBackgroundBoxStyle">
+            <div v-else-if="pokemon.name" :style="noBackgroundBoxStyle">
                 <img class="imgSprite" ref="pokemon sprite" :src="pokemon.sprites.front_default" />
-                <h2 :style="{ fontSize: imageSize.height / 20 + 'px', textTransform: 'capitalize' }">{{ pokemon.name }}
-                </h2>
+                <h2 :style="h2">{{ pokemon.name }}</h2>
             </div>
             <div :style="{
-            ...pokedexBotao,
-            marginRight: (imageSize.width / 1.75) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handleVersion">
+                ...pokedexBotao,
+                marginRight: (imageSize.width / 1.75) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handleVersion(undefined)">
                 <h1 :style="{ opacity: visualizador }" class="text">1</h1>
             </div>
             <div :style="{
-            ...pokedexBotao,
-            marginRight: (imageSize.width / 28) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handleVersion">
+                ...pokedexBotao,
+                marginRight: (imageSize.width / 28) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handleVersion(undefined)">
                 <h1 :style="{ opacity: visualizador }" class="text">1</h1>
             </div>
             <div :style="{
-            ...setasV,
-            bottom: (this.imageSize.height / 5) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handlePokemon(false)">
+                ...setasV,
+                bottom: (this.imageSize.height / 5) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handlePokemon(false)">
                 <h2 :style="{ opacity: visualizador }" class="text">2</h2>
             </div>
             <div :style="{
-            ...setasH,
-            marginLeft: (this.imageSize.height / 3.55) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handlePokemon(false)">
+                ...setasH,
+                marginLeft: (this.imageSize.height / 3.55) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handlePokemon(false)">
                 <h2 :style="{ opacity: visualizador }" class="text">2</h2>
             </div>
             <div :style="{
-            ...setasH,
-            marginLeft: (this.imageSize.height / 2.05) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handlePokemon(true)">
+                ...setasH,
+                marginLeft: (this.imageSize.height / 2.05) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handlePokemon(true)">
                 <h2 :style="{ opacity: visualizador }" class="text">3</h2>
             </div>
             <div :style="{
-            ...setasV,
-            bottom: (this.imageSize.height / 9.8) + 'px',
-            backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
-        }" @click="handlePokemon(true)">
+                ...setasV,
+                bottom: (this.imageSize.height / 9.8) + 'px',
+                backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
+            }" @click="handlePokemon(true)">
                 <h2 :style="{ opacity: visualizador }" class="text">3</h2>
             </div>
             <div class="instruções" :style="{ opacity: visualizador * 1.5 }">
@@ -99,7 +99,7 @@
                 selected: 0,
                 offset: 0,
                 pokemons: [{}],
-                pokemon: { name: '', sprites: { front_default: '' } },
+                pokemon: { name: '' },
                 imgPokedex: pokedex,
                 imageSize: { width: 0, height: 0 },
                 boxStyle: {},
@@ -108,7 +108,10 @@
                 intervalo: 0,
                 setasH: {},
                 setasV: {},
-                version: true
+                h1: {},
+                h2: {},
+                version: true,
+                isFunctionAllowed: true
             }
         },
         created() {
@@ -135,29 +138,51 @@
                 }, 200);
             },
             handlePokemon(more) {
+                if (!this.isFunctionAllowed) {
+                    return
+                }
+
+                this.isFunctionAllowed = false;
                 if (more) {
                     if (!this.version) {
                         this.selected = this.selected + 1;
-                        return this.callPokemon();
+                        this.callPokemon();
+                        return setTimeout(() => {
+                            this.isFunctionAllowed = true;
+                        }, 250);
                     }
                     if (!this.pokemons[this.selected + 1]) {
-                        return
+                        return setTimeout(() => {
+                            this.isFunctionAllowed = true;
+                        }, 250);
                     }
                     this.selected = this.selected + 1;
                     if ((this.selected === 7 && this.pokemons.length === 10) || this.selected === 17) {
                         this.offset = this.offset + 10;
                         this.callPokemons(this.selected);
+                        return setTimeout(() => {
+                            this.isFunctionAllowed = true;
+                        }, 250);
                     }
+                    return setTimeout(() => {
+                        this.isFunctionAllowed = true;
+                    }, 250);
                 } else if (this.selected > 0) {
                     if (!this.version && this.selected !== 1) {
                         this.selected = this.selected - 1;
-                        return this.callPokemon();
+                        this.callPokemon();
+                        return setTimeout(() => {
+                            this.isFunctionAllowed = true;
+                        }, 250);
                     }
                     this.selected = this.selected - 1;
                     if (this.selected === 2 && this.pokemons[this.selected].name !== 'venusaur') {
                         this.offset = this.offset - 10;
                         this.callPokemons(this.selected);
                     }
+                    return setTimeout(() => {
+                        this.isFunctionAllowed = true;
+                    }, 250);
                 }
             },
             callPokemons: async function (initial, nowOffset) {
@@ -166,7 +191,7 @@
                 }
 
                 try {
-                    const net = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${nowOffset ? 10 : 20}&offset=${nowOffset ? nowOffset : this.offset}`);
+                    const net = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${nowOffset === undefined ? 10 : 20}&offset=${nowOffset === undefined ? this.offset : nowOffset}`);
                     if (initial === true) {
                         this.pokemons = [...net.data.results];
                     } else if (initial === 17) {
@@ -189,6 +214,7 @@
                     const net = await axios.get(link ? link : `https://pokeapi.co/api/v2/pokemon/${this.selected}/`);
                     const num = link ? link.split('/')[6] : `https://pokeapi.co/api/v2/pokemon/${this.selected}/`.split('/')[6];
                     this.pokemon = net.data;
+                    console.log(this.pokemon)
                     if (link) {
                         this.selected = Number(num);
                     }
@@ -196,30 +222,30 @@
                     console.log(error)
                 }
             },
-            handleVersion() {
+            handleVersion(link) {
+                if (!this.isFunctionAllowed) {
+                    return
+                }
+                this.isFunctionAllowed = false;
                 this.version = !this.version;
+
                 if (this.version === false) {
-                    this.callPokemon(this.pokemons[this.selected].url);
+                    this.callPokemon(link ? link : this.pokemons[this.selected].url);
                 } else {
-                    const num = this.selected % 20;
-                    let nowOffset = this.selected % 100 - this.selected % 10;
-                    nowOffset = nowOffset - this.offset;
-                    if (num < 3) {
-                        nowOffset = nowOffset + 10;
-                        console.log(nowOffset)
-                        this.selected = num - 1 + 10;
-                    } else if (num > 16) {
-                        nowOffset = nowOffset - 10;
-                        console.log(nowOffset)
-                        this.selected = num - 1 - 10;
-                    } else {
-                        this.selected = num - 1;
+                    let num = this.pokemon.id % 10;
+                    let nowOffset = this.pokemon.id - num;
+                    if (num < 3 && !(this.pokemon.id < 3)) {
+                        nowOffset = nowOffset - 10 > 0 ? nowOffset - 10 : 0;
+                        num = num + 10;
                     }
-                    console.log(nowOffset)
+                    this.selected = num - 1;
                     this.callPokemons(true, nowOffset)
                     this.offset = nowOffset;
                     this.pokemon = { name: '', sprites: { front_default: '' } };
                 }
+                return setTimeout(() => {
+                    this.isFunctionAllowed = true;
+                }, 250);
             }
         },
         mounted() {
@@ -283,6 +309,13 @@
                         justifyContent: 'space-evenly',
                         alignItems: 'center'
                     };
+                    this.h1 = {
+                        fontSize: this.imageSize.height / 15.5 + 'px'
+                    };
+                    this.h2 = { 
+                        fontSize: this.imageSize.height / 20 + 'px', 
+                        textTransform: 'capitalize' 
+                    }
                 },
                 deep: true
             }
@@ -326,18 +359,16 @@
 
     .screenPart {
         height: 33.33%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         text-transform: capitalize;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
-
-    .texts {
+        text-align: center;
         position: absolute;
-        left: 50%;
-        right: 50%;
+        cursor: pointer;
     }
 
     .mainText {
