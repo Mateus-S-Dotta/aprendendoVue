@@ -2,8 +2,7 @@
     <div class="divExplanation">
         <h1>Inputs</h1>
         <p> Aqui no Vue.Js, no caso dos Inputs, tem um detalhe legal </p>
-        <p> O valor do Input pode ser atrelado a uma variável alterável através do atributo <strong>"v-model"</strong>
-        </p>
+        <p> O valor do Input pode ser atrelado a uma variável alterável através do atributo <strong>"v-model"</strong></p>
         <p>
             Ao invez de ter um valor num state e uma função que altera o valor, você simplesmente coloca o
             atributo <strong>v-model="nomeDaVariável"</strong> e está pronto

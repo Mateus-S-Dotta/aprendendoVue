@@ -1,8 +1,11 @@
 <template>
     <div class="divExplanation">
         <h1>Pokemon</h1>
-        <p>Agora você verá algo que nonguém nunca fez: <strong>Uma Pokedex</strong></p>
+        <p>Agora você verá algo que ninguém nunca fez: <strong>Uma Pokedex</strong></p>
         <p><strong>Observação:</strong> que trabalheira pra deixar esse quadrado perfeitinho no centro, mds</p>
+        <hr />
+        <h1>Interações</h1>
+        <h3>Clique em qualquer lugar na pokedex para interagir</h3>
         <div class="center">
             <img ref="image" @click="ativarVisualicao" @load="getImageSize" :src="imgPokedex" />
             <div class="tela" :style="boxStyle">
@@ -13,6 +16,7 @@
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
             >
+                <h1 :style="{opacity: visualizador}" class="text">1</h1>
             </div>
             <div :style="{
                     ...pokedexBotao, 
@@ -20,6 +24,7 @@
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
             >
+                <h1 :style="{opacity: visualizador}" class="text">1</h1>
             </div>
             <div :style="{
                     ...setasH,
@@ -27,19 +32,23 @@
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
             >
+                <h2 :style="{opacity: visualizador}" class="text">3</h2>
             </div>
             <div :style="{
                     ...setasH,
                     marginLeft: (this.imageSize.height / 3.55) + 'px',
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
-            ></div>
+            >
+                <h2 :style="{opacity: visualizador}" class="text">2</h2>
+            </div>
             <div :style="{
                     ...setasV,
                     bottom: (this.imageSize.height / 9.8) + 'px',
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
             >
+                <h2 :style="{opacity: visualizador}" class="text">3</h2>
             </div>
             <div :style="{
                     ...setasV,
@@ -47,6 +56,21 @@
                     backgroundColor: `rgb(100, 100, 255, ${visualizador})`,
                 }"
             >
+                <h2 :style="{opacity: visualizador}" class="text">2</h2>
+            </div>
+            <div class="instruções" :style="{opacity: visualizador * 1.5}">
+                <div class="line">
+                    <h3>1:</h3>
+                    <p>Alterar Modo</p>
+                </div>
+                <div class="line">
+                    <h3>2:</h3>
+                    <p>Cima</p>
+                </div>
+                <div class="line">
+                    <h3>3:</h3>
+                    <p>Baixo</p>
+                </div>
             </div>
         </div>
     </div>
@@ -70,7 +94,7 @@
                 pokedexBotao: {},
                 intervalo: 0,
                 setasH: {},
-                setasV: {}
+                setasV: {},
             }
         },
         // created: async function () {
@@ -94,13 +118,15 @@
             ativarVisualicao() {
                 clearInterval(this.intervalo);
                 this.visualizador = 0.7;
-                this.intervalo = setInterval(() => {
-                    this.visualizador = this.visualizador - 0.05
-                    if (this.visualizador <= 0) {
-                        this.visualizador = 0;
-                        clearInterval(this.intervalo);
-                    }
-                }, 100);
+                setTimeout(() => {
+                    this.intervalo = setInterval(() => {
+                        this.visualizador = this.visualizador - 0.05
+                        if (this.visualizador <= 0) {
+                            this.visualizador = 0;
+                            clearInterval(this.intervalo);
+                        }
+                    }, 150);
+                }, 1000)
             }
         },
         mounted() {
@@ -122,6 +148,9 @@
                         marginLeft: this.imageSize.width / 10.5 + 'px',
                     };
                     this.pokedexBotao = {
+                        display: 'flex',
+                        justifyContent : 'center',
+                        alignItems: 'center',
                         height: (this.imageSize.height / 11) + 'px',
                         width: (this.imageSize.height / 11) + 'px',
                         bottom: '12.1%',
@@ -130,6 +159,9 @@
                         cursor: 'pointer'
                     };
                     this.setasH = {
+                        display: 'flex',
+                        justifyContent : 'center',
+                        alignItems: 'center',
                         position: 'absolute',
                         height: (this.imageSize.height / 18) + 'px',
                         width: (this.imageSize.width / 16) + 'px',
@@ -137,12 +169,15 @@
                         cursor: 'pointer'
                     };
                     this.setasV = {
+                        display: 'flex',
+                        justifyContent : 'center',
+                        alignItems: 'center',
                         position: 'absolute',
                         height: (this.imageSize.width / 16) + 'px',
                         width: (this.imageSize.height / 18) + 'px',
                         marginLeft: (this.imageSize.height / 2.6) + 'px',
-                        cursor: 'pointer'
-                    }
+                        cursor: 'pointer',
+                    };
                 },
                 deep: true
             }
@@ -157,6 +192,7 @@
         align-items: center;
         margin-top: 32px;
         position: relative;
+        margin-bottom: 64px;
     }
 
     img {
@@ -166,5 +202,20 @@
         display: block;
         max-height: 90vh;
         object-fit: contain;
+    }
+
+    .text {
+        color: black;
+        text-align: center;
+    }
+
+    .instruções {
+        display: flex;
+        flex-basis: 120px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        position: absolute;
+        top: 105%
     }
 </style>
