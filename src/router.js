@@ -13,7 +13,7 @@ import PokemonVue from './components/PokemonVue.vue'
 const routes = [
     { path: '/router/:input?', component: RouterVue },
     { path: '/:catchAll(.*)', component: NotFound },
-    { path: '/', component: DadosVue },
+    { path: '/', component: PokemonVue },
     { path: '/pokemon', component: PokemonVue, name: 'Pokemon' },
     { path: '/dados', component: DadosVue, name: 'Dados' },
     { path: '/inputs', component: InputsVue, name: 'Inputs' },

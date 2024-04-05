@@ -31,7 +31,7 @@
 		},
 		computed: {
 			thatRoute() {
-				return this.$route.path.split('/')[1] ? '/' + this.$route.path.split('/')[1] : '/dados';
+				return this.$route.path.split('/')[1] ? '/' + this.$route.path.split('/')[1] : '/pokemon';
 			}
 		},
 		components: {
